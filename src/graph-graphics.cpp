@@ -1,4 +1,4 @@
-//#include <bits/stdc++.h>
+#include <bits/stdc++.h>
 #include "graph-graphics.h"
 using namespace std;
 
@@ -15,16 +15,21 @@ void drawstr(GLuint x, GLuint y, const char* format, int length)// draw string o
         glutBitmapCharacter(font_style, *(format+i) );
     }
 }
-void getPixel(int x, int y, GLubyte pixels[3])
-{  
-    glReadPixels(x,y,1.0,1.0,GL_RGB,GL_UNSIGNED_BYTE,pixels);  
-} 
 
 void setPixel(GLint x, GLint y) // set pixel as black
 {
     glBegin(GL_POINTS); 
     glColor3f(0.0f, 0.0f, 0.0f);
-    glPointSize (20.0);
+    glPointSize (30.0);
+    glVertex2i(x,y);
+    glEnd();
+}
+
+void setPixel(GLint x, GLint y,int clr) // set pixel as black
+{
+    glBegin(GL_POINTS); 
+    glColor3f(1.0f, 1.0f, 1.0f);
+    glPointSize (30.0);
     glVertex2i(x,y);
     glEnd();
 }
@@ -105,6 +110,58 @@ void drawEdge(pair<int ,int> p, pair<int, int> q) // line drawing algo
         else
             x+=s1;
     }
+}
+void drawEdge(pair<int ,int> p, pair<int, int> q,int clr) // line drawing algo
+{
+    int x1,x2,y1,y2;
+    x1= p.first;
+    x2= q.first;
+    y1= p.second;
+    y2= q.second;
+
+    int dx, dy, x, y, d, s1, s2, swap=0, temp;
+
+    dx = abs(x2 - x1);
+    dy = abs(y2 - y1);
+    s1 = sign(x2-x1);
+    s2 = sign(y2-y1);
+
+    if(dy > dx)
+    {
+        temp = dx;
+        dx = dy; 
+        dy = temp;
+        swap = 1;
+    }
+
+    d = 2 * dy - dx;
+    x = x1;
+    y = y1;
+
+    int i;
+
+    for(i = 1; i < dx; i++)
+    {
+        if(clr==0)     
+        setPixel(x,y);
+        else
+        setPixel(x,y,1);
+        while(d>=0)
+        {
+            d=d-2*dx;
+            if(swap)
+                x+=s1;
+            else
+                y+=s2;
+        }
+
+        d=d+2*dy;
+        if(swap)
+            y+=s2;
+        else
+            x+=s1;
+    }
+    drawstr((x1+x2)/2-5,(y1+y2)/2, str.c_str(), str.length());
 }
 void handleResize(int w, int h)
 {

@@ -3,7 +3,6 @@
 #include <unistd.h>
 #include <GL/glut.h>
 #include "../src/graph-graphics.h"
-
 using namespace std;
 
 

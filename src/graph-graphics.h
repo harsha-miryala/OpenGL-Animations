@@ -18,9 +18,8 @@ extern GLubyte strcol[3]; // string color of node number (red)
 void handleResize(int , int );
 void drawCircle(int ,pair <int , int>);
 void drawEdge(pair<int ,int> , pair<int, int> );
+void drawEdge(pair<int ,int> , pair<int, int> ,int );
 void drawstr(GLuint , GLuint , const char* , int );
-void getPixel(int , int , GLubyte* );
 void setPixel(GLint , GLint );
-void setPixelcol(int , int , GLubyte*);
-void boundaryFill4(int ,int ,GLubyte* ,GLubyte* );
+void setPixel(GLint , GLint ,int );
 
