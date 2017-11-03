@@ -2,7 +2,6 @@
 #include "graph-graphics.h"
 using namespace std;
 
-
 string str; // to hold the node number to print on nodes
 GLvoid *font_style = GLUT_BITMAP_HELVETICA_18;
 GLubyte strcol[3]={230,100,80}; // string color of node number (red)

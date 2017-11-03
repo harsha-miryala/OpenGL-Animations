@@ -6,8 +6,6 @@
 using namespace std;
 
 int *color; // holds the colors of nodes
-int *ecolor; //holds the colors of edges for final shortest path display
-//map< int, vector< pair<int, int > > > adjlist; // maps node number to a vector containing node numbers of neighbours
 vector <int>  graph[100000];
 int vt=0; // no of vertices drawn
 size_t n=0 , e=0; // no of nodes and edges
