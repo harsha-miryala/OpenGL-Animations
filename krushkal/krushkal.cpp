@@ -140,7 +140,7 @@ void Kruskal(struct Graph* graph)
         {
             result[e++] = next_edge;
             color[next_edge.src]=1;
-            color[next_edge.src]=1;
+            color[next_edge.dest]=1;
             final.insert(make_pair(next_edge.src,next_edge.dest));
             display();
             usleep(1200000);
