@@ -65,8 +65,8 @@ void mouse(int button, int state, int x, int y)
         if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)   
         { 
             coordinates[vt].first = x;
-            coordinates[vt].second = (700-y);
-            cout<<x<<'\t'<<700-y<<'\n';
+            coordinates[vt].second = (800-y);
+            cout<<x<<'\t'<<1000-y<<'\n';
             vt++;
             display();
             usleep(600000);
@@ -76,14 +76,14 @@ void mouse(int button, int state, int x, int y)
     {
         cout<<"\nRunning DFS\n";
         for(int i=0;i<n;i++)
-		{
-		  	if(color[i]==0)
-			{
+        {
+            if(color[i]==0)
+            {
                 usleep(600000);
                 display();
-				DFS(i);
-			}
-		}
+                DFS(i);
+            }
+        }
     }
 }
 void display()
@@ -101,43 +101,46 @@ void display()
     {
         for(int i=0;i<n;i++)
         {
-        	vector<int> neighbours = adjlist[i];
-        	for( int j : neighbours)
-        	{
-        		drawEdge(coordinates[i],coordinates[j]);
-        	}
+            vector<int> neighbours = adjlist[i];
+            for( int j : neighbours)
+            {
+                drawEdge(coordinates[i],coordinates[j]);
+            }
         }
     }
+    str = "hello";
+    drawstr(100,100, str.c_str(), str.length());
+    
     glutSwapBuffers();
 }
 
 int main(int argc, char** argv)
 {
     vt=0;
-	cout<<"Enter the number of nodes in the graph"; nl
-	cin>>n;
-	color =  new int[n];
-	coordinates= new pair< int ,int > [n];
-	memset(color, 0 ,n*sizeof(int));
-	cout<<"Enter the number of edges in the graph"; nl
-	cin>>e;
-	cout<<"Enter the edges of the graph (u --> v) pairs"; nl
-	size_t u,v;
-	for(int i=0;i<e;i++)
-	{
-		cin>>u>>v;
-		adjlist[u].push_back(v);
+    cout<<"Enter the number of nodes in the graph"; nl
+    cin>>n;
+    color =  new int[n];
+    coordinates= new pair< int ,int > [n];
+    memset(color, 0 ,n*sizeof(int));
+    cout<<"Enter the number of edges in the graph"; nl
+    cin>>e;
+    cout<<"Enter the edges of the graph (u --> v) pairs"; nl
+    size_t u,v;
+    for(int i=0;i<e;i++)
+    {
+        cin>>u>>v;
+        adjlist[u].push_back(v);
         adjlist[v].push_back(u);
-	}
-	/**/
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(700, 700);
-	glutInitWindowPosition(100, 100);
-	glutCreateWindow("Depth First Search");
-	glutDisplayFunc(display);
-	glutMouseFunc(mouse);
-	glutReshapeFunc(handleResize);
-	glutMainLoop();
-	return 0;
+    }
+    /**/
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitWindowSize(1300, 800);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Depth First Search");
+    glutDisplayFunc(display);
+    glutMouseFunc(mouse);
+    glutReshapeFunc(handleResize);
+    glutMainLoop();
+    return 0;
 }
