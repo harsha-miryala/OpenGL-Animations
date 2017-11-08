@@ -65,8 +65,8 @@ void mouse(int button, int state, int x, int y)
         if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)   
         { 
             coordinates[vt].first = x;
-            coordinates[vt].second = (800-y);
-            cout<<x<<'\t'<<1000-y<<'\n';
+            coordinates[vt].second = (700-y);
+            cout<<x<<'\t'<<700-y<<'\n';
             vt++;
             display();
             usleep(600000);
@@ -108,11 +108,12 @@ void display()
             }
         }
     }
-    str = "hello";
-    drawstr(100,100, str.c_str(), str.length());
-    
     glutSwapBuffers();
-}
+
+    str = "hello";
+    drawstr(500,500, str.c_str(), str.length());
+
+}    
 
 int main(int argc, char** argv)
 {
@@ -135,7 +136,7 @@ int main(int argc, char** argv)
     /**/
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(1300, 800);
+    glutInitWindowSize(700, 700);
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Depth First Search");
     glutDisplayFunc(display);
