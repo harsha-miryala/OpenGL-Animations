@@ -40,7 +40,7 @@ void printPath(int parent[], int j)
  	final.insert(make_pair(min(j,parent[j]),max(j,parent[j])));
  	color[parent[j]]=2;
  	display();
-    usleep(600000);
+    usleep(1200000);
     printPath(parent, parent[j]);
  
     printf("%d ", j);
@@ -59,7 +59,7 @@ int printSolution(int n, int parent[])
     {
     	color[i]=2;
     	display();
-    	usleep(600000);
+    	usleep(1200000);
         printf("\n%d -> %d \t\t %d\t\t%d ", src, i, dist[i], src);
         printPath(parent, i);
     }
@@ -124,12 +124,9 @@ void mouse(int button, int state, int x, int y)
     }
     if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)   
     {
-        //for(int i=0;i<n;i++)
 		if(color[0]==0&&done==false)
 		{
 				cout<<"\nRunning Dijkstra\n";
-				//cout<<"greying node "<<i; nl
-				//color[i]=1;
 				display();
 				dijkstra(0);
 		}
@@ -179,6 +176,7 @@ void display()
 	        		if(final.find(make_pair(i,j))!=final.end()||final.find(make_pair(j,i))!=final.end())
 	        		{
 	        			drawEdge(coordinates[i],coordinates[j],1);
+	        			
 	        		}
 	        		else
 	        		{
@@ -188,6 +186,17 @@ void display()
 	        }
 	    }
 	}
+	glColor3f(1.0f, 1.0f, 1.0f);
+	str = "-----------------------------------------------------------";
+    drawstr(10,90, str.c_str(), str.length());
+    str = "White - Initial color of the node";
+    drawstr(10,70, str.c_str(), str.length());
+    str = "Green - The node is being processed";
+    drawstr(10,50, str.c_str(), str.length());
+    str = "Red - All of its neighbours are reached or the final processing is done";
+    drawstr(10,30, str.c_str(), str.length());
+    str = "-----------------------------------------------------------";
+    drawstr(10,10, str.c_str(), str.length());
     glutSwapBuffers();
 }
 
@@ -203,7 +212,6 @@ int main(int argc, char** argv)
 	coordinates= new pair< int ,int > [n];
 	cout<<"Enter the number of edges in the graph"; nl
 	cin>>e;
-	ecolor = new int[n];
 	cout<<"Enter the edges of the graph (u --> v) pairs and their weight w"; nl
 	size_t u,v,w;
 	for(int i=0;i<n;i++)
@@ -222,7 +230,7 @@ int main(int argc, char** argv)
 	/**/
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(700, 700);
+	glutInitWindowSize(1000, 700);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Dijkstra");
 	glutDisplayFunc(display);
