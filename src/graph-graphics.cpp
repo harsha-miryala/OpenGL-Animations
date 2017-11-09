@@ -24,7 +24,7 @@ void setPixel(GLint x, GLint y) // set pixel as black
     glEnd();
 }
 
-void setPixel(GLint x, GLint y,int clr) // set pixel as black
+void setPixel(GLint x, GLint y,int clr) // set pixel as white
 {
     glBegin(GL_POINTS); 
     glColor3f(1.0f, 1.0f, 1.0f);
