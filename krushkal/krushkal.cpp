@@ -230,6 +230,8 @@ void display()
 	}
     glglColor3f(1.0f, 1.0f, 1.0f);
     str = "-----------------------------------------------------------";
+    drawstr(10,110, str.c_str(), str.length());
+    str = "Dijkstra-Shortest Path Algorithm";
     drawstr(10,90, str.c_str(), str.length());
     str = "White - Initial color of the node";
     drawstr(10,70, str.c_str(), str.length());

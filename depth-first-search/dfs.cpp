@@ -110,9 +110,10 @@ void display()
     }
     glColor3f(1.0f, 1.0f, 1.0f);
     str = "-----------------------------------------------------------";
+    drawstr(10,110, str.c_str(), str.length());
+    str = "Depth First Search";
     drawstr(10,90, str.c_str(), str.length());
     str = "White - Initial color of the node";
-    drawstr(10,70, str.c_str(), str.length());
     str = "Green - The node is being processed";
     drawstr(10,50, str.c_str(), str.length());
     str = "Red - All of its neighbours are reached or the final processing is done";
