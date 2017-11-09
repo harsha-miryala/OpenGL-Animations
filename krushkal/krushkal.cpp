@@ -228,7 +228,7 @@ void display()
 	        }
 	    }
 	}
-    glglColor3f(1.0f, 1.0f, 1.0f);
+    glColor3f(1.0f, 1.0f, 1.0f);
     str = "-----------------------------------------------------------";
     drawstr(10,90, str.c_str(), str.length());
     str = "White - Initial color of the node";
