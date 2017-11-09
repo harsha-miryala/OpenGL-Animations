@@ -105,6 +105,17 @@ void display()
         	}
         }
     }
+    glColor3f(1.0f, 1.0f, 1.0f);
+	str = "-----------------------------------------------------------";
+    drawstr(10,90, str.c_str(), str.length());
+    str = "White - Initial color of the node";
+    drawstr(10,70, str.c_str(), str.length());
+    str = "Green - The node is being processed";
+    drawstr(10,50, str.c_str(), str.length());
+    str = "Red - All of its neighbours are reached or the final processing is done";
+    drawstr(10,30, str.c_str(), str.length());
+    str = "-----------------------------------------------------------";
+    drawstr(10,10, str.c_str(), str.length());
     glutSwapBuffers();
 }
 
@@ -128,7 +139,7 @@ int main(int argc, char** argv)
 	/**/
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutInitWindowSize(700, 700);
+	glutInitWindowSize(1000, 700);
 	glutInitWindowPosition(100, 100);
 	glutCreateWindow("Breadth First Search");
 	glutDisplayFunc(display);
